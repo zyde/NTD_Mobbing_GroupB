@@ -16,6 +16,13 @@
     </script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js">
     </script>
+	<script type="text/javascript">
+	var today = new Date(2017, 06, 06);
+	var date = new Date(today.getFullYear(), today.getMonth()+1, today.getDate());
+	// today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+	console.log(today);
+	console.log(date);
+	</script>
 </head>
 
 <body>
@@ -74,6 +81,7 @@
                             </li>
                         </ul>
                         <input type="text" class="form-control team-filter" placeholder="Filter Team">
+						<input type="date" class="form-control team-calendar" placeholder="Select date">
                     </div>
                 </form>
             </nav>
