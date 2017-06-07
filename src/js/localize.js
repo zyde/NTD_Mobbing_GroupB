@@ -33,10 +33,10 @@ var localizer = function (){
                     fourthNavBtn: "Järgmine päev",
                     fifthNavBtn: "Järgmine nädal",
                     competition: "Konkurents",
-                    kickOffDate: "Kick Off",
+                    kickOffDate: "Algus aeg",
                     home: "Kodu",
                     score: "Skoor",
-                    away: "Kodu",
+                    away: "Vastlane",
                     team: "Meeskond",
                     fixtures: "inventar",
                     all: "Kõik",
@@ -112,6 +112,7 @@ var localizer = function (){
     }
 
     FixtureFinder.localizePage = function(lang){
+
         FixtureFinder.currentLanguage = lang;
         var localizer = translator(lang);
         updateNavBarBrand(localizer);
@@ -120,6 +121,7 @@ var localizer = function (){
         updateDateSelectNav(localizer);
         updateHeaders(localizer);
         updateNoOfFixtures(localizer);
+		FixtureFinder.setDateWithCurrentLanguage(FixtureFinder.currentDateSelected,lang);
 
     };
 

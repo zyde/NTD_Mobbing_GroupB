@@ -1,10 +1,11 @@
 var FixtureFinder = {
-    currentLanguage : 'en'
+    currentLanguage : 'en', currentDateSelected : moment()
 };
+
+
 
 FixtureFinder.initializer = function() {
     var dateFormat = "YYYY-MM-DD";
-    var currentDateSelected = moment();
     var dateSelectButtons = '.dateSelect';
     var teamFilterInput = $('.navbar .team-filter');
     var countryFilterSelector = '.competitions input[name=competition]';
@@ -18,7 +19,7 @@ FixtureFinder.initializer = function() {
     };
 
     var getFixturesForCurrentDate = function() {
-        getFixturesByDate(currentDateSelected.format(dateFormat));
+        getFixturesByDate(FixtureFinder.currentDateSelected.format(dateFormat));
     };
 
     var fixtureFilter = function(fixtures) {
@@ -42,6 +43,7 @@ FixtureFinder.initializer = function() {
     var addListeners = function() {
         addListenerFor(teamFilterInput, 'keyup', filterCurrentFixtureList);
         addListenerFor(countryFilterSelector, 'click', filterCurrentFixtureList);
+
         addListenerFor(localizeButtons, 'click',
             function(){ FixtureFinder.localizePage(this.value) }
         );
@@ -49,9 +51,9 @@ FixtureFinder.initializer = function() {
             function() {
                 var offset = this.getAttribute('data-offset');
                 if (offset === "0") {
-                    currentDateSelected = moment();
+                    FixtureFinder.currentDateSelected = moment();
                 } else {
-                    currentDateSelected = moment(currentDateSelected).add(daysToMillis(parseInt(offset)));
+                    FixtureFinder.currentDateSelected = moment(FixtureFinder.currentDateSelected).add(daysToMillis(parseInt(offset)));
                 }
                 getFixturesForCurrentDate();
             }
